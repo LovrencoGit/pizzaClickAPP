@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.tweb.lovrenco.pizzaclick.ProfiloActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloLabelUsername"
+        android:textAlignment="center"
+        android:background="@color/colorAccent"
+        android:text="USERNAME"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloUsername"
+        android:textAlignment="center"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloLabelIndirizzo"
+        android:textAlignment="center"
+        android:background="@color/colorAccent"
+        android:text="INDIRIZZO"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloIndirizzo"
+        android:textAlignment="center"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloLabelNumOrdini"
+        android:textAlignment="center"
+        android:background="@color/colorAccent"
+        android:text="NUMERO ORDINI EFFETTUATI"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloNumOrdini"
+        android:textAlignment="center"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtProfiloLabelStatoCarrello"
+        android:textAlignment="center"
+        android:background="@color/colorAccent"
+        android:text="STATO CARRELLO ATTUALE"
+        android:padding="@dimen/my_default_padding"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfiloStatoCarrelloNumPizze"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:padding="@dimen/my_default_padding"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtProfiloStatoCarrelloPrezzo"
+            android:textAlignment="center"
+            android:layout_weight="1"
+            android:padding="@dimen/my_default_padding"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+    </LinearLayout>
+
+</LinearLayout>

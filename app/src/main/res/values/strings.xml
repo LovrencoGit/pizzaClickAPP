@@ -1,0 +1,31 @@
+<resources>
+    <!--        (1)       LOCALHOST
+    CASA MIA        <string name="localhost">192.168.1.30</string>
+    UNITO-WiFi      <string name="localhost">172.16.28.184</string>
+    IDEM-WiFi      <string name="localhost">172.17.88.211</string>
+    EDISU-WiFi      <string name="localhost">10.17.3.15</string>
+    CASA FABIO      <string name="localhost">192.168.0.103</string>
+    -->
+    <!--        (2)     CAMBIA ORA DELL'EMULATORE     -->
+    <string name="localhost">10.17.3.15</string>
+
+    <string name="app_name">PizzaClick</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="accedi">Accedi</string>
+
+    <string name="title_activity_main">Pizza Click</string>
+    <string name="title_activity_carrello">Carrello</string>
+    <string name="title_activity_ordini">I miei ordini</string>
+    <string name="title_activity_profilo">Profilo utente</string>
+    <string name="title_activity_maps">Dove Siamo</string>
+    <string name="title_activity_contatti">Contatti</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+
+</resources>

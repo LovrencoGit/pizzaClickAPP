@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtRowDataORDINI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18dip"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:padding="10dip"/>
+        <TextView
+            android:id="@+id/txtRowPrezzoORDINI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:padding="10dip"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtRowOraORDINI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="18dip"
+            android:textColor="@color/colorPrimaryDark"
+            android:padding="10dip"/>
+        <TextView
+            android:id="@+id/txtRowNumPizzeORDINI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"
+            android:padding="10dip"/>
+
+    </LinearLayout>
+
+</LinearLayout>

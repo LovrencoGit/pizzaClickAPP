@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dip">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/txtLabelIndirizzo"
+        android:text="INDIRIZZO"
+        android:background="@color/colorAccent"
+        android:padding="10dip"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/txtIndirizzo"
+        android:padding="10dip"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dip">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtLabelDate"
+            android:text="DATA"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtLabelTime"
+            android:text="ORA"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtDateSelected"
+            android:layout_weight="1"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtTimeSelected"
+            android:layout_weight="1"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+    </LinearLayout>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:id="@+id/txtLabelCarrello"
+        android:text="CARRELLO"
+        android:background="@color/colorAccent"
+        android:padding="10dip"
+        android:textSize="18dip"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtCarrelloNumeroPizze"
+            android:layout_weight="1"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:id="@+id/txtCarrelloPrezzo"
+            android:layout_weight="1"
+            android:padding="10dip"
+            android:textSize="18dip"
+            android:textColor="@color/colorBlack"/>
+    </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ACQUISTA"
+        android:id="@+id/btnAcquista"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dip"
+        android:textSize="18dip"
+        android:textColor="@color/colorWhite"
+        android:background="@color/colorBlack"/>
+
+
+</LinearLayout>

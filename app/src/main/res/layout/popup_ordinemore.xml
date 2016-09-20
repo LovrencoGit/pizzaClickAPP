@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip">
+
+    <LinearLayout
+        android:id="@+id/linearlayoutPizzePrenotate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtLabelPizzePrenotate"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:text="PIZZE PRENOTATE"
+            android:padding="5dip"
+            android:layout_marginBottom="10dip"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dip">
+        <TextView
+            android:id="@+id/txtLabelData"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:padding="5dip"
+            android:text="DATA"/>
+        <TextView
+            android:id="@+id/txtLabelOra"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:padding="5dip"
+            android:text="ORA"/>
+        <TextView
+            android:id="@+id/txtLabelPrezzo"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:padding="5dip"
+            android:text="PREZZO"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="16dip"
+            android:padding="5dip"
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:id="@+id/txtOra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:padding="5dip"/>
+        <TextView
+            android:id="@+id/txtPrezzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="16dip"
+            android:textColor="@color/colorBlack"
+            android:padding="5dip"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLabelIndirizzo"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="16dip"
+        android:textColor="@color/colorBlack"
+        android:padding="5dip"
+        android:text="INDIRIZZO"/>
+    <TextView
+        android:id="@+id/txtIndirizzo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:textSize="16dip"
+        android:textColor="@color/colorBlack"
+        android:padding="5dip"
+        android:layout_marginBottom="15dip"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnAnnullaOrdine"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:text="SEGNA COME ANNULLATO"
+            android:layout_marginRight="10dip" />
+        <Button
+            android:id="@+id/btnConsegnato"
+            android:layout_width="match_parent"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:text="SEGNA COME CONSEGNATO"
+            android:layout_marginLeft="10dip" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtLabelValutazione"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="16dip"
+        android:textColor="@color/colorBlack"
+        android:padding="5dip"
+        android:text="VALUTA IL NOSTRO SERVIZIO"
+        android:layout_marginTop="10dip"/>
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:numStars="5"
+        android:stepSize="1"
+        android:rating="0"
+        android:focusable="false"
+        android:clickable="false"/>
+
+</LinearLayout>

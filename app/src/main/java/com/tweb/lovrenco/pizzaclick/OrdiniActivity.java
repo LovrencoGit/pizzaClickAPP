@@ -31,8 +31,10 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import model.Ordine;
 import model.Pizza;
@@ -428,7 +430,17 @@ public class OrdiniActivity extends AppCompatActivity {
                 if(elencoPizzePrenotate == null || elencoPizzePrenotate.size()==0) {
                     Toast.makeText(getApplicationContext(), "Server non raggiungibile, riprovare più tardi \n Ci scusiamo per il disagio tecnico", Toast.LENGTH_LONG).show();
                 }else{
-                    for(PizzaPrenotata pizza : elencoPizzePrenotate){
+
+                    HashMap<PizzaPrenotata, Integer> mapNEW = new HashMap<PizzaPrenotata, Integer>();
+                    for(int i=0; i<elencoPizzePrenotate.size();i++){
+                        PizzaPrenotata pizza = elencoPizzePrenotate.get(i);
+                        //pizza.setQuantita(0);
+
+                        Integer qty = mapNEW.get(pizza);
+                        mapNEW.put(pizza, ( qty==null ? 1 : qty+1) );
+                    }
+
+                    for(PizzaPrenotata pizza : mapToArray(mapNEW)){
                         LinearLayout llrow = new LinearLayout(getApplicationContext());
                         llrow.setOrientation(LinearLayout.HORIZONTAL);
 
@@ -444,7 +456,7 @@ public class OrdiniActivity extends AppCompatActivity {
                         txtNome.setLayoutParams(params);
 
                         TextView txtPrezzo = new TextView(getApplicationContext());
-                        txtPrezzo.setText(pizza.getPrezzoPizzaPrenotata()+"0 €");
+                        txtPrezzo.setText(pizza.getPrezzoPizzaPrenotata()+"0 €  (x"+pizza.getQuantita()+")");
                         txtPrezzo.setTextSize(18);
                         txtPrezzo.setGravity(Gravity.CENTER);
                         txtPrezzo.setTextColor(Color.BLACK);
@@ -486,6 +498,21 @@ public class OrdiniActivity extends AppCompatActivity {
 
 
 
+
+
+    private ArrayList<PizzaPrenotata> mapToArray(HashMap<PizzaPrenotata, Integer> map){
+        ArrayList<PizzaPrenotata> arrayPizze = new ArrayList<>();
+        for(Map.Entry<PizzaPrenotata, Integer> entry : map.entrySet()) {
+            PizzaPrenotata pizza = entry.getKey();
+            Integer qty = entry.getValue();
+            pizza.setQuantita(qty);
+            if(qty!=null && qty > 0) {
+                arrayPizze.add(pizza);
+            }
+        }
+
+        return arrayPizze;
+    }
 
 }
 

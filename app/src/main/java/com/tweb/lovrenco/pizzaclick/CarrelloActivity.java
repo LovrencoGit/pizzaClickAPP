@@ -31,13 +31,19 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import model.Carrello;
 import model.Ordine;
 import model.Pizza;
 import model.Utente;
+import utilities.ArrayListPizzaDisplayer;
 import utilities.CustomAdapterActivityCarrello;
 import utilities.GsonRequest;
 
@@ -46,6 +52,7 @@ public class CarrelloActivity extends AppCompatActivity {
     Utente utente;
     Carrello carrello;
     ArrayList<Pizza> menu;
+    Pizza[] arrayPizze;
 
     ListView carrelloListView;
     Button btnProcediAcquisto;
@@ -409,16 +416,22 @@ public class CarrelloActivity extends AppCompatActivity {
     }
 
 
+
     private void riempiListViewConCarrello(){
-        ArrayList<Pizza> elencoPizze = carrello.getElencoPizze();
-        Pizza[] arrayPizze = new Pizza[elencoPizze.size()];
-        //ImageView[] imagesRmv = new ImageView[elencoPizze.size()];
-        Pizza pizza;
+        final ArrayList<Pizza> elencoPizze = carrello.getElencoPizze();
+        arrayPizze = new Pizza[elencoPizze.size()];
+        HashMap<Pizza, Integer> map = new HashMap<Pizza, Integer>();
         for(int i=0; i<elencoPizze.size();i++){
-            pizza = elencoPizze.get(i);
+            Pizza pizza = elencoPizze.get(i);
             arrayPizze[i] = pizza;
+
+            Integer qty = map.get(pizza);
+            map.put(pizza, ( qty==null ? 1 : qty+1) );
         }
-        final CustomAdapterActivityCarrello customadapter = new CustomAdapterActivityCarrello(getApplicationContext(), R.layout.rowitem_carrello, arrayPizze);
+
+        //final HashMap<Integer, Integer> map = ArrayListPizzaDisplayer.getElencoPizzeToHashMap(elencoPizze);
+        arrayPizze = mapToArray(map);   // arrayPizzeQTY
+        final CustomAdapterActivityCarrello customadapter = new CustomAdapterActivityCarrello(getApplicationContext(),R.layout.rowitem_carrello, arrayPizze); // arrayPizzeQTY
         carrelloListView =(ListView)findViewById(R.id.carrelloListView);
         carrelloListView.setAdapter(customadapter);
 
@@ -426,25 +439,36 @@ public class CarrelloActivity extends AppCompatActivity {
         carrelloListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //final String titoloriga = (String) adapter.getItem(position);
-                final Pizza pizzaSelected = carrello.getElencoPizze().get(position);
+                //final String titoloriga = (String) customadapter.getItem(position);
                 //Toast.makeText(getApplicationContext(),pizzaSelected.getIngredienti(),Toast.LENGTH_LONG).show();
 
+
+                //final Pizza pizzaSelected = getPizzaSelectedFromIdInMap(map, position, elencoPizze);
+                final Pizza pizzaSelected = arrayPizze[position];   // arrayPizzeQTY
                 AlertDialog.Builder miaAlert = new AlertDialog.Builder(CarrelloActivity.this);
                 miaAlert.setTitle(pizzaSelected.getNomePizza());
                 miaAlert.setMessage("Sei sicuro di voler eliminare questa pizza?");
-                final int posizioneDaRimuovere = position;
                 miaAlert.setNegativeButton("NO", null);
                 miaAlert.setPositiveButton("SI", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                         carrello.removeCarrello(pizzaSelected);
-                        List<Pizza> carrelloNEW = carrello.getElencoPizze();
-                        Pizza[] arrayPizzeNEW = new Pizza[carrello.getElencoPizze().size()];
+
+                        ArrayList<Pizza> carrelloNEW = carrello.getElencoPizze();
+                        arrayPizze = new Pizza[carrelloNEW.size()];
+                        HashMap<Pizza, Integer> mapNEW = new HashMap<Pizza, Integer>();
                         for(int i=0; i<carrelloNEW.size();i++){
-                            arrayPizzeNEW[i] = carrelloNEW.get(i);
+                            Pizza pizza = carrelloNEW.get(i);
+                            pizza.setQuantita(0);
+                            arrayPizze[i] = pizza;
+
+                            Integer qty = mapNEW.get(pizza);
+                            Integer putFlag = mapNEW.put(pizza, ( qty==null ? 1 : qty+1) );
                         }
-                        CustomAdapterActivityCarrello customadapterNEW = new CustomAdapterActivityCarrello(getApplicationContext(), R.layout.rowitem_carrello, arrayPizzeNEW);
+
+
+                        arrayPizze = mapToArray(mapNEW);
+                        CustomAdapterActivityCarrello customadapterNEW = new CustomAdapterActivityCarrello(getApplicationContext(), R.layout.rowitem_carrello, arrayPizze);
                         carrelloListView.setAdapter(customadapterNEW);
                         TextView txtNumeroPizze = (TextView) findViewById(R.id.txtNumeroPizze);
                         txtNumeroPizze.setText(carrello.getElencoPizze().size()+" pizze");
@@ -460,8 +484,49 @@ public class CarrelloActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+/*
+    private Pizza getPizzaSelectedFromIdInMap(LinkedHashMap<Integer, Integer> map, int position, ArrayList<Pizza> elencoPizze){
+        Pizza output=null;
+        Integer id;
+        int index = 0;
+        //Set<Integer> idKeys = map.keySet();
+        Iterator<Integer> iterator = map.keySet().iterator();
+        while(iterator.hasNext() && output==null) {
+            if(index == position){
+                id=(Integer)iterator.next();
+                output = ArrayListPizzaDisplayer.getPizzaByIdPizza(elencoPizze, id);
+            }
+            index++;
+        }
+        return output;
+        /*
+        String key="default";
+        Iterator myVeryOwnIterator = CHILD_NAME_DOB.keySet().iterator();
+        while(myVeryOwnIterator.hasNext()) {
+            key=(String)myVeryOwnIterator.next();
+            //String value=(String)meMap.get(key);
+        }
+        *
+    }
+*/
 
+    private Pizza[] mapToArray(HashMap<Pizza, Integer> map){
+        ArrayList<Pizza> arrayPizze = new ArrayList<>();
+        for(Map.Entry<Pizza, Integer> entry : map.entrySet()) {
+            Pizza pizza = entry.getKey();
+            Integer qty = entry.getValue();
+            pizza.setQuantita(qty);
+            if(qty > 0) {
+                arrayPizze.add(pizza);
+            }
+        }
+        Pizza[] array = new Pizza[arrayPizze.size()];
+        for(int i = 0; i<array.length; i++){
+            array[i] = arrayPizze.get(i);
+        }
+        return array;
     }
 
 

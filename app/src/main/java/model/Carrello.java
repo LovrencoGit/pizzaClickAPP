@@ -63,6 +63,16 @@ public class Carrello implements Parcelable {
         return false;
     }
 
+    public boolean removeCarrelloByName(Pizza pizzaRmv) {
+        for (Pizza i : elencoPizze) {
+            if (i.getNomePizza().equals(pizzaRmv.getNomePizza())) {
+                prezzoTotale -= pizzaRmv.getPrezzoPizza();
+                return elencoPizze.remove(i);
+            }
+        }
+        return false;
+    }
+
     public void svuota(){
         elencoPizze.clear();
         prezzoTotale = 0.0;

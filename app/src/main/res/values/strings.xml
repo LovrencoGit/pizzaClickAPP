@@ -2,12 +2,12 @@
     <!--        (1)       LOCALHOST
     CASA MIA        <string name="localhost">192.168.1.30</string>
     UNITO-WiFi      <string name="localhost">172.16.28.184</string>
-    IDEM-WiFi      <string name="localhost">172.17.88.211</string>
+    IDEM-WiFi      <string name="localhost">172.17.70.103</string>
     EDISU-WiFi      <string name="localhost">10.17.3.15</string>
     CASA FABIO      <string name="localhost">192.168.0.103</string>
     -->
     <!--        (2)     CAMBIA ORA DELL'EMULATORE     -->
-    <string name="localhost">10.17.3.15</string>
+    <string name="localhost">172.17.94.1</string>
 
     <string name="app_name">PizzaClick</string>
     <string name="username">Username</string>

@@ -11,6 +11,7 @@ public class PizzaPrenotata implements Parcelable {
     private int idOrdine;
     private String nomePizzaPrenotata;
     private double prezzoPizzaPrenotata;
+    private int quantita;
 
     public PizzaPrenotata() {
         idPizzaPrenotata= Integer.MAX_VALUE;
@@ -56,6 +57,38 @@ public class PizzaPrenotata implements Parcelable {
 
     public void setPrezzoPizzaPrenotata(double prezzoPizzaPrenotata) {
         this.prezzoPizzaPrenotata = prezzoPizzaPrenotata;
+    }
+
+    public int getQuantita() {
+        return quantita;
+    }
+
+    public void setQuantita(int quantita) {
+        this.quantita = quantita;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PizzaPrenotata that = (PizzaPrenotata) o;
+
+        if (idOrdine != that.idOrdine) return false;
+        if (Double.compare(that.prezzoPizzaPrenotata, prezzoPizzaPrenotata) != 0) return false;
+        return nomePizzaPrenotata != null ? nomePizzaPrenotata.equals(that.nomePizzaPrenotata) : that.nomePizzaPrenotata == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = idOrdine;
+        result = 31 * result + (nomePizzaPrenotata != null ? nomePizzaPrenotata.hashCode() : 0);
+        temp = Double.doubleToLongBits(prezzoPizzaPrenotata);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
     }
 
     @Override

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.tweb.lovrenco.pizzaclick.R;
 
+import java.util.Locale;
+
 import model.Pizza;
 
 /**
@@ -33,7 +35,7 @@ public class CustomAdapterActivityMain extends ArrayAdapter<Pizza> {
 
         Pizza p = getItem(position);
         txtNomePizza.setText(p.getNomePizza());
-        txtPrezzoPizza.setText(p.getPrezzoPizza()+"0 €");
+        txtPrezzoPizza.setText(String.format(Locale.US, "%1$.2f", p.getPrezzoPizza())+" €");
         txtIngredientiPizza.setText(p.getIngredienti());
         return convertView;
     }

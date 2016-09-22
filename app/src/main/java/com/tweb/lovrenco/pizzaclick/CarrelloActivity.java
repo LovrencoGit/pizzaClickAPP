@@ -11,11 +11,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -27,23 +24,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import model.Carrello;
 import model.Ordine;
 import model.Pizza;
 import model.Utente;
-import utilities.ArrayListPizzaDisplayer;
 import utilities.CustomAdapterActivityCarrello;
 import utilities.GsonRequest;
 
@@ -99,7 +91,7 @@ public class CarrelloActivity extends AppCompatActivity {
         TextView txtNumeroPizze = (TextView) findViewById(R.id.txtNumeroPizze);
         txtNumeroPizze.setText(carrello.getElencoPizze().size()+" pizze");
         TextView txtPrezzoTotale = (TextView) findViewById(R.id.txtPrezzoTotaleCarrello);
-        txtPrezzoTotale.setText("TOTALE :     " + carrello.getPrezzoTotale() + "0 €");
+        txtPrezzoTotale.setText("TOTALE :     " + String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale()) + " €");
 
         riempiListViewConCarrello();
 
@@ -214,7 +206,7 @@ public class CarrelloActivity extends AppCompatActivity {
                         txtCarrelloNumeroPizze.setText(carrello.getElencoPizze().size()+" pizze");
 
                         txtCarrelloPrezzo = (TextView) dialog.findViewById(R.id.txtCarrelloPrezzo);
-                        txtCarrelloPrezzo.setText(carrello.getPrezzoTotale()+"0 €");
+                        txtCarrelloPrezzo.setText(String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale())+" €");
 
                         btnAcquista = (Button) dialog.findViewById(R.id.btnAcquista);
                         btnAcquista.setOnClickListener(new View.OnClickListener() {
@@ -473,7 +465,7 @@ public class CarrelloActivity extends AppCompatActivity {
                         TextView txtNumeroPizze = (TextView) findViewById(R.id.txtNumeroPizze);
                         txtNumeroPizze.setText(carrello.getElencoPizze().size()+" pizze");
                         TextView txtPrezzoTotale = (TextView) findViewById(R.id.txtPrezzoTotaleCarrello);
-                        txtPrezzoTotale.setText("TOTALE :     " + carrello.getPrezzoTotale() + "0 €");
+                        txtPrezzoTotale.setText("TOTALE :     " + String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale()) + " €");
 
                     }
                 });
@@ -486,31 +478,7 @@ public class CarrelloActivity extends AppCompatActivity {
 
     }
 
-/*
-    private Pizza getPizzaSelectedFromIdInMap(LinkedHashMap<Integer, Integer> map, int position, ArrayList<Pizza> elencoPizze){
-        Pizza output=null;
-        Integer id;
-        int index = 0;
-        //Set<Integer> idKeys = map.keySet();
-        Iterator<Integer> iterator = map.keySet().iterator();
-        while(iterator.hasNext() && output==null) {
-            if(index == position){
-                id=(Integer)iterator.next();
-                output = ArrayListPizzaDisplayer.getPizzaByIdPizza(elencoPizze, id);
-            }
-            index++;
-        }
-        return output;
-        /*
-        String key="default";
-        Iterator myVeryOwnIterator = CHILD_NAME_DOB.keySet().iterator();
-        while(myVeryOwnIterator.hasNext()) {
-            key=(String)myVeryOwnIterator.next();
-            //String value=(String)meMap.get(key);
-        }
-        *
-    }
-*/
+
 
     private Pizza[] mapToArray(HashMap<Pizza, Integer> map){
         ArrayList<Pizza> arrayPizze = new ArrayList<>();

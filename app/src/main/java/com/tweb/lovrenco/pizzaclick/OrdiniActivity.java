@@ -135,7 +135,7 @@ public class OrdiniActivity extends AppCompatActivity {
                 txtOra = (TextView) dialog.findViewById(R.id.txtOra);
                 txtOra.setText(time);
                 txtPrezzo = (TextView) dialog.findViewById(R.id.txtPrezzo);
-                txtPrezzo.setText(ordine.getPrezzoTotale()+"0 €");
+                txtPrezzo.setText(String.format(Locale.US, "%1$.2f", ordine.getPrezzoTotale())+" €");
                 txtIndirizzo = (TextView) dialog.findViewById(R.id.txtIndirizzo);
                 txtIndirizzo.setText(ordine.getIndirizzo());
                 ratingbar = (RatingBar) dialog.findViewById(R.id.ratingBar);
@@ -366,7 +366,7 @@ public class OrdiniActivity extends AppCompatActivity {
 
     }
 
-    //TODO controllare se funziona
+
     private static boolean controlloDisplayAnnulla(String dataOrdine) {
         boolean output = false;
         int annoOrdine = Integer.parseInt(dataOrdine.substring(0, 4));
@@ -456,7 +456,7 @@ public class OrdiniActivity extends AppCompatActivity {
                         txtNome.setLayoutParams(params);
 
                         TextView txtPrezzo = new TextView(getApplicationContext());
-                        txtPrezzo.setText(pizza.getPrezzoPizzaPrenotata()+"0 €  (x"+pizza.getQuantita()+")");
+                        txtPrezzo.setText(String.format(Locale.US, "%1$.2f", pizza.getPrezzoPizzaPrenotata())+" €  (x"+pizza.getQuantita()+")");
                         txtPrezzo.setTextSize(18);
                         txtPrezzo.setGravity(Gravity.CENTER);
                         txtPrezzo.setTextColor(Color.BLACK);

@@ -11,6 +11,7 @@ import com.tweb.lovrenco.pizzaclick.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import model.Ordine;
 
@@ -40,7 +41,7 @@ public class CustomAdapterActivityOrdini extends ArrayAdapter<Ordine> {
         txtRowDataORDINI.setText(datetimeSplitted.get(0));
         txtRowNumPizzeORDINI.setText(o.getQuantitaTotale()+" pizze");
         txtRowOraORDINI.setText(datetimeSplitted.get(1));
-        txtRowPrezzoORDINI.setText(o.getPrezzoTotale()+"0 €");
+        txtRowPrezzoORDINI.setText(String.format(Locale.US, "%1$.2f", o.getPrezzoTotale())+" €");
 
         return convertView;
     }

@@ -20,6 +20,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import model.Carrello;
 import model.Ordine;
@@ -58,7 +59,7 @@ public class ProfiloActivity extends AppCompatActivity {
         txtProfiloStatoCarrelloNumPizze = (TextView) findViewById(R.id.txtProfiloStatoCarrelloNumPizze);
         txtProfiloStatoCarrelloNumPizze.setText(carrello.getElencoPizze().size()+" pizze");
         txtProfiloStatoCarrelloPrezzo = (TextView) findViewById(R.id.txtProfiloStatoCarrelloPrezzo);
-        txtProfiloStatoCarrelloPrezzo.setText(carrello.getPrezzoTotale()+"0 €");
+        txtProfiloStatoCarrelloPrezzo.setText(String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale())+" €");
         txtProfiloNumOrdini = (TextView) findViewById(R.id.txtProfiloNumOrdini);
         richiestaHTTPforNumOrdini();        //txtProfiloNumOrdini.setText("999");
 

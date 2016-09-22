@@ -35,6 +35,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.IllegalFormatConversionException;
 import java.util.List;
+import java.util.Locale;
 
 import model.Carrello;
 import model.Ordine;
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity
                 txtPrezzo = (TextView) dialog.findViewById(R.id.textViewPrezzo);
                 txtNomePizza.setText(pizzaSelected.getNomePizza().toUpperCase());
                 txtIngredienti.setText(pizzaSelected.getIngredienti());
-                txtPrezzo.setText(pizzaSelected.getPrezzoPizza()+"0 €");
+                txtPrezzo.setText(String.format(Locale.US, "%1$.2f", pizzaSelected.getPrezzoPizza())+" €");
 
 
                 btnAddCarrello = (Button) dialog.findViewById(R.id.btnAddCarrello);
@@ -162,7 +163,7 @@ public class MainActivity extends AppCompatActivity
                                 txtSizeCarrello = (TextView) findViewById(R.id.txtSizeCarrello);
                                 txtSizeCarrello.setText("" + carrello.getElencoPizze().size());
                                 txtPrezzoCorrenteCarrello = (TextView) findViewById(R.id.txtPrezzoCorrenteCarrello);
-                                txtPrezzoCorrenteCarrello.setText(carrello.getPrezzoTotale() + "0 €");
+                                txtPrezzoCorrenteCarrello.setText(String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale()) + " €");
                                 Toast.makeText(getApplicationContext(), "aggiunto nel carrello", Toast.LENGTH_SHORT).show();
                                 dialog.hide();
                             }
@@ -178,7 +179,7 @@ public class MainActivity extends AppCompatActivity
 
 
         txtPrezzoCorrenteCarrello = (TextView)findViewById(R.id.txtPrezzoCorrenteCarrello);
-        txtPrezzoCorrenteCarrello.setText(carrello.getPrezzoTotale()+"0 €");
+        txtPrezzoCorrenteCarrello.setText(String.format(Locale.US, "%1$.2f", carrello.getPrezzoTotale())+" €");
         txtSizeCarrello = (TextView) findViewById(R.id.txtSizeCarrello);
         txtSizeCarrello.setText("" + carrello.getElencoPizze().size());
 
